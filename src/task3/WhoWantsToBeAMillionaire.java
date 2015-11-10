@@ -13,7 +13,7 @@ public class WhoWantsToBeAMillionaire {
     game.addQuestion("What is the distance to the Moon?", "156 000 km", "384 000 km", "432 000 km", "521 000 km", "384 000 km");
 
     Scanner scanner = new Scanner(System.in);
-    for (Question q = game.getNextQuestion(); q != null; q = game.getNextQuestion()) {
+    for (Question q : game) {
       System.out.println(q.q);
       System.out.println("1. " + q.answ1);
       System.out.println("2. " + q.answ2);
@@ -21,7 +21,7 @@ public class WhoWantsToBeAMillionaire {
       System.out.println("4. " + q.answ4);
 
       String playerGuess = scanner.nextLine();
-      if (!game.checkAnswer(q, playerGuess)) {
+      if (!q.checkAnswer(playerGuess)) {
         throw new RuntimeException("You failed!");
       }
       System.out.println("Correct!");
